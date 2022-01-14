@@ -18,7 +18,7 @@ $(BIN): $(OBJS)
 	$(CC) $(CFLAGS) $(OJBS) -o $@
 
 $(OBJ)/%.o: $(SRC)/%.c
-	$(CC) $(CFLAGS) -c $< -O $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) -r $(BIN)/* $(OBJ)/*
