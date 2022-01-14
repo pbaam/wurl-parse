@@ -1,10 +1,9 @@
-#include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv) {
-	char* name;
+void read_file(char* filename, char* name)
+{
 	FILE* fptr;
-	fptr = fopen(argv[1], "r");
+	fptr = fopen(filename, "r");
 
 	if (fptr == NULL) {
 		printf("error\n");
@@ -12,8 +11,6 @@ int main(int argc, char **argv) {
 	}
 
 	fscanf(fptr, "%s", name);
-	printf("%s\n", name);
 
 	fclose(fptr);
-	return 0;
 }
