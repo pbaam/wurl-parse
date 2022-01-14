@@ -1,20 +1,28 @@
 CC = gcc
 CFLAGS = -g -Wall
+BIN = bin
 SRC = src
 OBJ = obj
 SRCS = $(wildcard $(SRC)/*.c)
 OBJS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
-BINDIR = bin
-BIN = $(BINDIR)/main
+MAINFILE = main
+MAIN = $(BIN)/$(MAINFILE)
 
-all: $(BIN)
+all: install
 
-release: CFLAGS=-Wall -O2 -DNDEBUG
-release: clean
-release: $(BIN)
+$(BIN):
+	mkdir $@
+$(OBJ):
+	mkdir $@
 
-$(BIN): $(OBJS)
+install: CFLAGS=-Wall -O2 -DNDEBUG
+install: clean
+install: | $(BIN) $(OBJ)
+install: $(MAIN)
+release: install
+
+$(MAIN): $(OBJS)
 	$(CC) $(CFLAGS) $(OJBS) -o $@
 
 $(OBJ)/%.o: $(SRC)/%.c
