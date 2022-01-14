@@ -11,7 +11,9 @@ void read_file(char* filename, char* name)
 		exit(1);
 	}
 
-	fscanf(fptr, "%s", name);
+	if(fgets(name, 64, fptr) != NULL) {
+		printf("%s\n", name);
+	}
 
 	fclose(fptr);
 }

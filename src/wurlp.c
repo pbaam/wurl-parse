@@ -8,7 +8,6 @@ int main(int argc, char **argv)
 	name = (char*) malloc(128*sizeof(char));
 
 	read_file(argv[1], name);
-	printf("%s\n", name);
 
 	return 0;
 }
