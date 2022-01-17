@@ -23,7 +23,7 @@ install: $(MAIN)
 release: install
 
 $(MAIN): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJ)/* -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 $(OBJ)/%.o: $(SRC)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
